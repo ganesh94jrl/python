@@ -1,0 +1,57 @@
+# Create an empty dictionary to store inventory items
+inventory = {}
+
+# Loop to allow user interaction
+while True:
+    print("\nOptions:")
+    print("1. Add an item")
+    print("2. Update item quantity")
+    print("3. Remove an item")
+    print("4. Display inventory")
+    print("5. Exit")
+
+    # Take user input for operation choice
+    choice = input("Enter your choice (1-5): ")
+
+    # Option to add an item
+    if choice == "1":
+        item = input("Enter item name: ")
+        quantity = int(input("Enter quantity: "))
+        inventory[item] = quantity  # Add item to dictionary
+        print(f"{item} added with quantity {quantity}.")
+
+    # Option to update item quantity
+    elif choice == "2":
+        item = input("Enter item name to update: ")
+        if item in inventory:
+            quantity = int(input("Enter new quantity: "))
+            inventory[item] = quantity  # Update quantity
+            print(f"Quantity of {item} updated to {quantity}.")
+        else:
+            print("Item not found in inventory!")
+
+    # Option to remove an item
+    elif choice == "3":
+        item = input("Enter item name to remove: ")
+        if item in inventory:
+            del inventory[item]  # Remove item from dictionary
+            print(f"{item} removed from inventory.")
+        else:
+            print("Item not found in inventory!")
+
+    # Option to display inventory
+    elif choice == "4":
+        if inventory:
+            print("\nCurrent Inventory:")
+            for item, quantity in inventory.items():
+                print(f"{item}: {quantity}")
+        else:
+            print("Inventory is empty!")
+
+    # Option to exit the program
+    elif choice == "5":
+        print("Exiting the inventory system. Goodbye!")
+        break
+
+    else:
+        print("Invalid choice! Please enter a number between 1 and 5.")
